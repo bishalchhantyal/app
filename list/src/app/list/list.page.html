@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>hello list</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+  <ion-toolbar color="secondary">
+    <ion-input [(ngModel)]="input"placeholder= " add item"></ion-input>
+    <ion-buttons slot="end">
+        <ion-button (click)="addListItem(input)" [disabled]="!input">Add</ion-button>
+    </ion-buttons>
+    
+  </ion-toolbar>
+<ion-list>
+<!----<ion-item-sliding *ngFor="let item of listItems">
+<ion-item>--->
+
+  <ion-item *ngFor = "let item of listItems" [class.done]= "item.status">
+
+ 
+
+  
+<ion-buttons slot="start">
+<ion-checkbox [checked]="item.status"(ionChange) ="changeItemStatus(item.id)"></ion-checkbox>
+</ion-buttons>
+
+ 
+
+  <ion-label>
+    {{item.name}}
+    
+  </ion-label>
+
+<ion-buttons slot="end">
+<ion-button fill="clear"(click)="deleteItem( item.id )" *ngIf="item.status">
+  <ion-icon name="close"></ion-icon>
+</ion-button>
+</ion-buttons> 
+ <!---- <ion-icon name="close"></ion-icon -->
+
+
+</ion-item>
+
+</ion-list>
+
+</ion-content>
